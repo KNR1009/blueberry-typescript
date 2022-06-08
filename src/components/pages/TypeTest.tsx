@@ -1,34 +1,16 @@
 import React from "react";
 
 export const TypeTest = () => {
-  type HasName = {
-    name: string;
-  };
-  type Family<Parent extends HasName, Child extends HasName> = {
-    mother: Parent;
-    child: Child;
-  };
-
-  type Parent = {
-    name: string;
-    age: number;
-  };
-
-  type Child = {
-    name: string;
-    sex: string;
-  };
-
-  const obj: Family<Parent, Child> = {
-    mother: {
-      name: "aaa",
-      age: 13,
+  const obj = {
+    double(num: number): number {
+      return num * 2;
     },
-    child: {
-      name: "鈴木",
-      sex: "bb",
+    double3(num: number): number {
+      return num * 3;
     },
   };
 
+  console.log(obj.double(1));
+  console.log(obj.double3(1));
   return <div>TypeTest</div>;
 };

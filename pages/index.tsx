@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
-
-import { TypeTest } from "../src/components/pages/TypeTest";
+// 第2章
+import { Basic } from "../src/components/02_BasicGrammarAndTypes";
 
 const Home: NextPage = () => {
   return (
     <>
-      <TypeTest></TypeTest>
+      <Basic></Basic>
     </>
   );
 };
