@@ -1,27 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 
 export const Functions = () => {
-  // nameプロパティーを持つ型
-  type HasName = {
-    name: string;
-  };
-  // nameとageプロパティーを持つ(HasNameの部分型)
-  type HasNameAndAge = {
-    name: string;
-    age: number;
-  };
-  // nameとageが返ってくる関数
-  const formAge = (age: number): HasNameAndAge => {
-    return {
-      name: "鈴木",
-      age,
-    };
-  };
-  // nameだけが返ってくる関数
-  const f: (age: number) => HasName = formAge;
-  const obj: HasName = f(100);
+  const [value1, setValue1] = useState<string>("");
+  const [value2, setValue2] = useState<string>("");
+  const [value3, setValue3] = useState<string>("");
 
-  console.log(obj);
+  const onChangeObj = {
+    value1: (e: React.ChangeEvent<HTMLInputElement>) =>
+      setValue1(e.target.value),
+    value2: (e: React.ChangeEvent<HTMLInputElement>) =>
+      setValue2(e.target.value),
+    value3: (e: React.ChangeEvent<HTMLInputElement>) =>
+      setValue3(e.target.value),
+  };
 
-  return <div>index</div>;
+  return (
+    <div>
+      <div className="input-container">
+        <label htmlFor="">入力フォーム1</label>
+        <input
+          type="text"
+          value={value1}
+          onChange={(e) => {
+            onChangeObj.value1(e);
+          }}
+        />
+        <label htmlFor="">入力フォーム2</label>
+        <input
+          type="text"
+          value={value2}
+          onChange={(e) => onChangeObj.value2(e)}
+        />
+        <label htmlFor="">入力フォーム3</label>
+        <input
+          type="text"
+          onChange={(e) => onChangeObj.value3(e)}
+          value={value3}
+        />
+      </div>
+    </div>
+  );
 };
